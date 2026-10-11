@@ -1,0 +1,40 @@
+{
+	"schemaVersion": 1,
+	"id": "no-elytra-limit",
+	"version": "${version}",
+	"name": "No Elytra Limit",
+	"description": "Removes the elytra speed cap and allows progressive acceleration with firework rockets. Configurable max speed and boost multiplier.",
+	"authors": [
+		"AstraZenit"
+	],
+	"contact": {
+		"homepage": "https://modrinth.com/mod/no-elytra-limit",
+		"sources": "https://github.com/AstraZenit/no-elytra-limit",
+		"issues": "https://github.com/AstraZenit/no-elytra-limit/issues"
+	},
+	"license": "MIT",
+	"icon": "assets/no-elytra-limit/icon.png",
+	"environment": "*",
+	"entrypoints": {
+		"main": [
+			"com.astrazenit.noelytralimit.NoElytraLimit"
+		],
+		"modmenu": [
+			"com.astrazenit.noelytralimit.ModMenuIntegration"
+		]
+	},
+	"mixins": [
+		"no-elytra-limit.mixins.json"
+	],
+	"depends": {
+		"fabricloader": ">=0.19.3",
+		"minecraft": "~26.1.2",
+		"java": ">=25",
+		"fabric-api": "*",
+		"cloth-config": "*",
+		"modmenu": "*"
+	},
+	"suggests": {
+		"modmenu": "*"
+	}
+}
