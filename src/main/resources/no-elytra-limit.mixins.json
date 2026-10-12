@@ -1,14 +1,11 @@
 {
 	"required": true,
 	"package": "com.astrazenit.noelytralimit.mixin",
-	"compatibilityLevel": "JAVA_25",
+	"compatibilityLevel": "JAVA_21",
 	"mixins": [
 		"FireworkRocketEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1
-	},
-	"overwrites": {
-		"requireAnnotations": true
 	}
 }

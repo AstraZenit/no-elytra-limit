@@ -25,6 +25,9 @@ public abstract class FireworkRocketEntityMixin {
             at = @At("TAIL")
     )
     private void onLaunch(Level level, ItemStack stack, LivingEntity stuckTo, CallbackInfo ci) {
+        // If the mod is off, don't accumulate boosts.
+        if (!NoElytraLimit.ENABLED) return;
+
         if (stuckTo instanceof Player player && player.isFallFlying()) {
             BoostState.increaseMax(player.getUUID(), NoElytraLimit.ROCKET_MULTIPLIER, NoElytraLimit.MAX_SPEED);
         }
@@ -32,6 +35,9 @@ public abstract class FireworkRocketEntityMixin {
 
     @ModifyConstant(method = "tick", constant = @Constant(doubleValue = 1.5))
     private double raiseTarget(double original) {
+        // If the mod is off, return the vanilla value (1.5).
+        if (!NoElytraLimit.ENABLED) return original;
+
         if (!(this.attachedToEntity instanceof Player player) || !player.isFallFlying()) {
             return original;
         }
@@ -39,7 +45,7 @@ public abstract class FireworkRocketEntityMixin {
         double currentMax = BoostState.getCurrentMax(player.getUUID());
         double target = currentMax / 20.0;
 
-        // Solo subimos el objetivo si ya es mayor que el vanilla
+        // Only raise the target if it's already higher than vanilla
         return Math.max(original, target);
     }
 }

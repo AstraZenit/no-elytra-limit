@@ -19,11 +19,10 @@ public class ModMenuIntegration implements ModMenuApi {
             ConfigEntryBuilder entryBuilder = builder.entryBuilder();
 
             general.addEntry(entryBuilder.startDoubleField(
-                            Component.literal("Max Speed (m/s)"),
+                            Component.literal("Max Speed (0 = Infinite)"),
                             NoElytraLimit.MAX_SPEED)
                     .setDefaultValue(300.0)
-                    .setMin(50.0)
-                    .setMax(1000.0)
+                    .setMin(0.0) // Allow 0 for no limit
                     .setSaveConsumer(value -> NoElytraLimit.MAX_SPEED = value)
                     .build());
 
@@ -32,7 +31,6 @@ public class ModMenuIntegration implements ModMenuApi {
                             NoElytraLimit.ROCKET_MULTIPLIER)
                     .setDefaultValue(1.5)
                     .setMin(1.1)
-                    .setMax(3.0)
                     .setSaveConsumer(value -> NoElytraLimit.ROCKET_MULTIPLIER = value)
                     .build());
 
